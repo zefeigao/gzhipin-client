@@ -8,6 +8,8 @@ import Login from './containers/login/login'
 import Main from './containers/main/main'
 import store from './redux/store'
 
+import './assets/css/index.less'
+
 
 ReactDOM.render(
   (
