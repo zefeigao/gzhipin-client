@@ -3,7 +3,7 @@
 import { func } from 'prop-types'
 import { combineReducers } from 'redux'
 
-import { AUTH_SUCCESS, ERROR_MSG, RESET_USER, RECEIVE_USER } from './action-types'
+import { AUTH_SUCCESS, ERROR_MSG, RESET_USER, RECEIVE_USER, RECEIVE_USER_LIST } from './action-types'
 import {getRedirectTo} from '../utils'
 
 const initUser = {
@@ -30,10 +30,23 @@ function user(state = initUser, action){
     }
 }
 
+const initUserList = []
+
+// 产生userlist状态的reducer
+function userList(state=initUserList, action){
+    switch(action.type){
+        case RECEIVE_USER_LIST: // data为userlist
+            return action.data
+        default:
+            return state
+    }
+}
+
 // 返回合并的reducer函数
 
 export default combineReducers({
-    user
+    user, 
+    userList
 })
 
-// 向外暴露的状态的结构 {user: {}}
+// 向外暴露的状态的结构 {user: {}, userList: []}
